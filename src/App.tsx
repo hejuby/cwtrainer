@@ -1,13 +1,16 @@
 import React from 'react';
 import './App.css';
-import Navbar from './Components/Navbar';
+import Navbar from './Components/Header/Navbar';
+import Playlists from './Components/Body/Playlists';
 
 const App = () =>
   <div className="App">
-    <header className="App-header">
+    <div className="App-header">
       <Navbar />
-    </header>
-    <h2>various players</h2>
+    </div>
+    <div className="App-body">
+      <Playlists />
+    </div>
   </div>
 
 export default App;
