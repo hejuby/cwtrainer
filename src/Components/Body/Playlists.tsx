@@ -1,8 +1,10 @@
 import React from 'react';
+import Playlist from './Playlist';
 
 const Playlists = () => 
   <div className="playlists">
-    <h3>Playlists</h3>
+    <Playlist />
+    <Playlist />
   </div>
 
 export default Playlists;
