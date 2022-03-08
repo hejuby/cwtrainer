@@ -15,9 +15,7 @@ const Playlists: React.FunctionComponent = () => {
   const onDragStart = (ev: React.DragEvent<HTMLLIElement>) => {
     console.log(`ev.target: ${ev.target}, string: ${ev.target.toString()}`);
     setGrab(ev.target as HTMLLIElement);
-    console.log(`grab: ${grab}`);
     ev.dataTransfer.effectAllowed = "move";
-    ev.dataTransfer.setData("text/html", ev.target.toString());
   }
 
   const onDragEnd = (ev: React.DragEvent<HTMLLIElement>) => {
@@ -25,9 +23,11 @@ const Playlists: React.FunctionComponent = () => {
   }
 
   const onDrop = (ev: React.DragEvent<HTMLLIElement>) => {
+    const target = ev.target as HTMLLIElement;
     let grabPos = Number(grab?.dataset.position);
-    let targetPos = Number((ev.target as HTMLLIElement).dataset.position);
-    console.log((ev.target as HTMLLIElement).dataset.key);
+    let targetPos = Number(target.dataset.position);
+    console.log(grab?.dataset);
+    console.log(target.dataset);
     console.log(`${grabPos} ${targetPos}`);
     
     let _musiclist = [...musiclists];
@@ -43,6 +43,7 @@ const Playlists: React.FunctionComponent = () => {
         {musiclists.map((name, index) => (
           <li
             key={index}
+            data-position={index}
 
             draggable="true"
 
