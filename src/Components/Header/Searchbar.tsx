@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Searchbar = () =>
+const Searchbar = (): JSX.Element =>
   <div className="searchbar">
     <input type="text" list="playlist-options" />
     <datalist id="playlist-options">

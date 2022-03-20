@@ -4,30 +4,31 @@ import Playlist from './Playlist';
 
 const lists = ["Custom", "Jazz", "Hiphop", "Classical", "Rock", "Pop"];
 
-const Playlists: React.FunctionComponent = () => {
+const Playlists = (): JSX.Element => {
   const [ musiclists, setMusiclists ] = useState(lists);
   const [ grab, setGrab ] = useState<HTMLLIElement | null>(null);
 
-  const onDragOver = (ev: React.DragEvent<HTMLLIElement>) => {
+  const onDragOver = (ev: any) => {
     ev.preventDefault();
   }
 
-  const onDragStart = (ev: React.DragEvent<HTMLLIElement>) => {
+  const onDragStart = (ev: any) => {
     console.log(`ev.target: ${ev.target}, string: ${ev.target.toString()}`);
-    setGrab(ev.target as HTMLLIElement);
+    setGrab(ev.target);
+    ev.target.style.opacity = .5;
     ev.dataTransfer.effectAllowed = "move";
   }
 
-  const onDragEnd = (ev: React.DragEvent<HTMLLIElement>) => {
+  const onDragEnd = (ev: any) => {
+    ev.target.style.opacity = "";
     ev.dataTransfer.dropEffect = "move";
   }
 
-  const onDrop = (ev: React.DragEvent<HTMLLIElement>) => {
-    const target = ev.target as HTMLLIElement;
+  const onDrop = (ev: any) => {
     let grabPos = Number(grab?.dataset.position);
-    let targetPos = Number(target.dataset.position);
+    let targetPos = Number(ev.target.dataset.position);
     console.log(grab?.dataset);
-    console.log(target.dataset);
+    console.log(ev.target.dataset);
     console.log(`${grabPos} ${targetPos}`);
     
     let _musiclist = [...musiclists];

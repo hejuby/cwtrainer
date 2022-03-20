@@ -1,7 +1,7 @@
 import React from 'react';
 import Searchbar from './Searchbar';
 
-const Navbar = () =>
+const Navbar = (): JSX.Element =>
 	<div className="Navbar">
 		<h1>Header</h1>
     <Searchbar />

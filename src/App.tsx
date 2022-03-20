@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './Components/Header/Navbar';
 import Playlists from './Components/Body/Playlists';
 
-const App = () =>
+const App = (): JSX.Element =>
   <div className="App">
     <div className="App-header">
       <Navbar />
