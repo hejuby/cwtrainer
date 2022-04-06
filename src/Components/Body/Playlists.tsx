@@ -35,7 +35,7 @@ const Playlists = (): JSX.Element => {
     _musiclist[grabPos] = _musiclist.splice(targetPos, 1, _musiclist[grabPos])[0];
 
     setMusiclists(_musiclist);
-    console.log(musiclists)
+    console.log(musiclists);
   }
 
   return (
@@ -44,7 +44,7 @@ const Playlists = (): JSX.Element => {
         {musiclists.map((name, index) => (
           <li
             key={index}
-            data-position={index}
+            data-index={index}
 
             draggable="true"
 
