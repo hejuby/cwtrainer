@@ -1,5 +1,8 @@
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, auto);
+}
+
+.box {
+  cursor: move;
 }

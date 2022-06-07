@@ -15,20 +15,21 @@ const Playlists = (): JSX.Element => {
   const onDragStart = (ev: any) => {
     console.log(`ev.target: ${ev.target}, string: ${ev.target.toString()}`);
     setGrab(ev.target);
-    ev.target.style.opacity = .5;
+    ev.target.style.opacity = '0.5';
     ev.dataTransfer.effectAllowed = "move";
   }
 
   const onDragEnd = (ev: any) => {
-    ev.target.style.opacity = "";
+    ev.target.style.opacity = '1';
     ev.dataTransfer.dropEffect = "move";
   }
 
   const onDrop = (ev: any) => {
     let grabPos = Number(grab?.dataset.position);
-    let targetPos = Number(ev.target.dataset.position);
+    let targetPos = Number((ev.target as HTMLLIElement).dataset.position);
+    console.log(`ev.target is HTMLLIElement: ${(ev.target as HTMLLIElement) instanceof HTMLLIElement}`);
     console.log(grab?.dataset);
-    console.log(ev.target.dataset);
+    console.log((ev.target as HTMLLIElement).dataset);
     console.log(`${grabPos} ${targetPos}`);
     
     let _musiclist = [...musiclists];
@@ -40,11 +41,11 @@ const Playlists = (): JSX.Element => {
 
   return (
     <div className="playlists">
-      <ul className="lists">
+      <div className="container">
         {musiclists.map((name, index) => (
-          <li
+          <div className="box"
             key={index}
-            data-index={index}
+            data-position={index}
 
             draggable="true"
 
@@ -53,9 +54,9 @@ const Playlists = (): JSX.Element => {
             onDragEnd={onDragEnd}
             onDrop={onDrop}
           >
-            <Playlist name={name} />
-          </li>))}
-      </ul>
+            <Playlist name={name}/>
+          </div>))}
+      </div>
     </div>
   )
 }
